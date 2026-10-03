@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- TÍTULO Y DESCRIPCIÓN POR DEFECTO -->
     <title id="page-title">Taber by Pass - Una iglesia de Fe</title>
-    <meta id="meta-desc" name="description" content="Bienvenidos a Taber by Pass. Una iglesia de Fe, esperanza y salvación. Sermones, Radios En Vivo y Taber TV.">
+    <meta id="meta-desc" name="description" content="Bienvenidos a Taber by Pass. Una iglesia de Fe, esperanza y salvación. Sermones, Radios En Vivo, Plan de Salvación, Colegio de Teología y Taber TV.">
 
-    <!-- METADATOS OPEN GRAPH PARA VISTA PREVIA -->
     <meta id="og-title" property="og:title" content="Taber by Pass - Una iglesia de Fe">
-    <meta id="og-desc" property="og:description" content="Una iglesia de Fe, esperanza y salvación. Disfruta de nuestros sermones, radios y transmisión en vivo.">
+    <meta id="og-desc" property="og:description" content="Una iglesia de Fe, esperanza y salvación. Disfruta de nuestros sermones, radios, plan de salvación y teología.">
     <meta id="og-image" property="og:image" content="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1200">
     <meta id="og-image-secure" property="og:image:secure_url" content="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1200">
     <meta property="og:image:type" content="image/jpeg">
@@ -20,7 +18,6 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Taber by Pass">
 
-    <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
     <meta id="tw-title" name="twitter:title" content="Taber by Pass - Una iglesia de Fe">
     <meta id="tw-desc" name="twitter:description" content="Una iglesia de Fe, esperanza y salvación. Sermones, Radio 106.1 FM, Neuma Stereo y Taber TV en vivo.">
@@ -70,7 +67,7 @@
                 </div>
 
                 <!-- DESKTOP NAV DINÁMICO -->
-                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-6 font-medium text-sm lg:text-base">
+                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-5 font-medium text-xs lg:text-sm">
                     <!-- Enlaces generados automáticamente -->
                 </nav>
 
@@ -126,7 +123,7 @@
                 </div>
             </section>
 
-            <!-- TARJETA VERSÍCULO DEL DÍA CON BOTONES DE COMPARTIR -->
+            <!-- TARJETA VERSÍCULO DEL DÍA CON FONDOS DE PAISAJES SELECCIONABLES -->
             <section id="versiculo-dia-section" class="py-12 bg-gradient-to-b from-blue-900 to-indigo-950 text-white px-4 sm:px-6 lg:px-8 border-b">
                 <div class="max-w-4xl mx-auto text-center space-y-6" data-aos="zoom-in">
                     <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500/30">
@@ -134,11 +131,22 @@
                         <span>Versículo del Día</span>
                     </div>
 
-                    <div id="verse-card-printable" class="bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 p-8 sm:p-12 rounded-3xl shadow-2xl border border-blue-800/80 text-center relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white font-serif pointer-events-none">“</div>
-                        <p id="daily-verse-text" class="text-xl sm:text-2xl md:text-3xl font-serif italic text-blue-50 leading-relaxed mb-6">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
-                        <h4 id="daily-verse-ref" class="text-amber-400 font-bold text-lg tracking-wider uppercase">Salmos 119:105 (RVR1960)</h4>
-                        <span class="text-xs text-gray-400 block mt-2">Taber by Pass - Una iglesia de Fe</span>
+                    <!-- SELECTOR DE PAISAJES -->
+                    <div class="flex flex-wrap justify-center items-center gap-2 mb-2">
+                        <span class="text-xs text-gray-300 font-medium mr-2">Elegir Fondo de Paisaje:</span>
+                        <button onclick="changeVerseBg('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200')" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold border border-white/20">Montañas</button>
+                        <button onclick="changeVerseBg('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200')" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold border border-white/20">Playa</button>
+                        <button onclick="changeVerseBg('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200')" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold border border-white/20">Bosque</button>
+                        <button onclick="changeVerseBg('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1200')" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold border border-white/20">Atardecer</button>
+                    </div>
+
+                    <div id="verse-card-printable" class="p-8 sm:p-12 rounded-3xl shadow-2xl border border-blue-800/80 text-center relative overflow-hidden bg-cover bg-center transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200');">
+                        <div class="absolute inset-0 bg-slate-950/70 backdrop-brightness-75"></div>
+                        <div class="relative z-10">
+                            <p id="daily-verse-text" class="text-xl sm:text-2xl md:text-3xl font-serif italic text-blue-50 leading-relaxed mb-6 drop-shadow-md">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
+                            <h4 id="daily-verse-ref" class="text-amber-400 font-bold text-lg tracking-wider uppercase drop-shadow">Salmos 119:105 (RVR1960)</h4>
+                            <span class="text-xs text-gray-200 block mt-2 font-medium tracking-wide">Taber by Pass - Una iglesia de Fe</span>
+                        </div>
                     </div>
 
                     <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
@@ -166,17 +174,17 @@
                 </div>
             </section>
 
-            <!-- CARRUSEL DE BANNERS -->
+            <!-- CARRUSEL DE BANNERS (CLIC NAVEGA A SUBPÁGINA DEDICADA) -->
             <section id="banner-eventos" class="py-12 bg-gray-100 border-b border-gray-200 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto" data-aos="fade-up">
                     <div class="text-center mb-6">
                         <span class="bg-amber-500/10 text-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-amber-500/20">
-                            <i class="fa-solid fa-bullhorn mr-1"></i> Anuncios Especiales & Eventos
+                            <i class="fa-solid fa-bullhorn mr-1"></i> Anuncios Especiales & Eventos (Haz clic para más detalles)
                         </span>
                     </div>
 
                     <div class="relative bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 min-h-[300px] sm:min-h-[420px] flex items-center justify-center group">
-                        <div id="banner-slides-container" class="w-full h-full relative"></div>
+                        <div id="banner-slides-container" class="w-full h-full relative cursor-pointer"></div>
                         <button onclick="prevBannerSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-11 h-11 rounded-full flex items-center justify-center transition shadow-lg opacity-80 group-hover:opacity-100 z-20"><i class="fa-solid fa-chevron-left"></i></button>
                         <button onclick="nextBannerSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-11 h-11 rounded-full flex items-center justify-center transition shadow-lg opacity-80 group-hover:opacity-100 z-20"><i class="fa-solid fa-chevron-right"></i></button>
                         <div id="banner-dots-container" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20"></div>
@@ -424,7 +432,8 @@
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-8">
             <div class="flex border-b border-gray-300 space-x-6 overflow-x-auto">
                 <button onclick="switchTab('general')" id="tab-btn-general" class="pb-3 font-semibold text-primary border-b-2 border-primary transition whitespace-nowrap">Config y Redes</button>
-                <button onclick="switchTab('banners')" id="tab-btn-banners" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Banners</button>
+                <button onclick="switchTab('banners')" id="tab-btn-banners" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Banners/Anuncios</button>
+                <button onclick="switchTab('teologia')" id="tab-btn-teologia" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Colegio Teología</button>
                 <button onclick="switchTab('menu')" id="tab-btn-menu" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Menú</button>
                 <button onclick="switchTab('blog')" id="tab-btn-blog" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Blog</button>
                 <button onclick="switchTab('videos')" id="tab-btn-videos" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Sermones</button>
@@ -432,7 +441,7 @@
                 <button onclick="switchTab('horarios')" id="tab-btn-horarios" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Horarios</button>
             </div>
 
-            <!-- TAB GENERAL Y CONFIGURACIÓN DE INFORMACIÓN INSTITUCIONAL -->
+            <!-- TAB GENERAL -->
             <div id="tab-general" class="admin-tab bg-white rounded-2xl shadow-sm p-6 sm:p-8 space-y-6">
                 <h3 class="text-xl font-bold text-gray-900 border-b pb-3">Configuración de Información, Logo y Redes</h3>
                 <form onsubmit="saveGeneralConfig(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -508,22 +517,30 @@
                 </form>
             </div>
 
-            <!-- TAB BANNERS -->
+            <!-- TAB BANNERS CON INFORMACIÓN EXTENDIDA Y FOTOS -->
             <div id="tab-banners" class="admin-tab bg-white rounded-2xl shadow-sm p-6 sm:p-8 space-y-6 hidden">
-                <h3 class="text-xl font-bold text-gray-900">Agregar o Modificar Banner</h3>
+                <h3 class="text-xl font-bold text-gray-900">Agregar o Modificar Banner / Anuncio</h3>
                 <form onsubmit="saveBanner(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border">
                     <input type="hidden" id="banner-edit-id">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Título Principal</label>
                         <input type="text" id="banner-title" required class="w-full border rounded-lg px-3 py-2 bg-white">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Subtítulo</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Subtítulo / Fecha</label>
                         <input type="text" id="banner-subtitle" class="w-full border rounded-lg px-3 py-2 bg-white">
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">URL Imagen</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">URL Imagen Portada</label>
                         <input type="url" id="banner-img" required class="w-full border rounded-lg px-3 py-2 bg-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Información Detallada del Anuncio</label>
+                        <textarea id="banner-details" rows="3" placeholder="Escribe toda la información del evento o anuncio..." class="w-full border rounded-lg px-3 py-2 bg-white text-sm"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Galería de Fotos para el Anuncio (Una URL por línea)</label>
+                        <textarea id="banner-photos" rows="3" placeholder="https://imagen1.jpg&#10;https://imagen2.jpg" class="w-full border rounded-lg px-3 py-2 bg-white text-xs font-mono"></textarea>
                     </div>
                     <div class="md:col-span-2 flex space-x-2">
                         <button type="submit" id="banner-btn-submit" class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg transition shadow flex-1">Guardar Banner</button>
@@ -532,6 +549,32 @@
                 </form>
                 <h4 class="font-bold text-gray-800 border-b pb-2">Banners Registrados</h4>
                 <div id="admin-banners-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- TAB COLEGIO DE TEOLOGÍA EN ADMIN -->
+            <div id="tab-teologia" class="admin-tab bg-white rounded-2xl shadow-sm p-6 sm:p-8 space-y-6 hidden">
+                <h3 class="text-xl font-bold text-gray-900">Administración - Colegio de Teología</h3>
+                <form onsubmit="saveTeologiaCycle(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border">
+                    <input type="hidden" id="teo-edit-id">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Ciclo / Nivel</label>
+                        <input type="text" id="teo-cycle-name" placeholder="Ej: Ciclo I - Fundamentos Teológicos" required class="w-full border rounded-lg px-3 py-2 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Horario de Clases</label>
+                        <input type="text" id="teo-schedule" placeholder="Sábados 8:00 AM - 12:00 PM" required class="w-full border rounded-lg px-3 py-2 bg-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Pensum y Asignaturas (Una materia por línea)</label>
+                        <textarea id="teo-subjects" rows="4" placeholder="Bibliología y Hermenéutica&#10;Teología Sistemática I&#10;Vida de Cristo" required class="w-full border rounded-lg px-3 py-2 bg-white text-sm"></textarea>
+                    </div>
+                    <div class="md:col-span-2 flex space-x-2">
+                        <button type="submit" id="teo-btn-submit" class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg transition shadow flex-1">Guardar Ciclo Teológico</button>
+                        <button type="button" onclick="cancelTeologiaEdit()" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2.5 rounded-lg transition hidden" id="teo-btn-cancel">Cancelar</button>
+                    </div>
+                </form>
+                <h4 class="font-bold text-gray-800 border-b pb-2">Ciclos Registrados</h4>
+                <div id="admin-teologia-list" class="space-y-3"></div>
             </div>
 
             <!-- TAB MENU -->
@@ -724,9 +767,14 @@
             document.getElementById('daily-verse-ref').innerText = `${verse.ref} (RVR1960)`;
         }
 
+        window.changeVerseBg = (imgUrl) => {
+            const cardEl = document.getElementById('verse-card-printable');
+            cardEl.style.backgroundImage = `url('${imgUrl}')`;
+        };
+
         window.downloadVerseImage = () => {
             const cardEl = document.getElementById('verse-card-printable');
-            html2canvas(cardEl, { scale: 2 }).then(canvas => {
+            html2canvas(cardEl, { scale: 2, useCORS: true }).then(canvas => {
                 const image = canvas.toDataURL("image/png");
                 const link = document.createElement('a');
                 link.download = `Versiculo_del_Dia_TaberByPass.png`;
@@ -799,25 +847,30 @@
                 fb: "https://facebook.com", yt: "https://youtube.com", ig: "https://instagram.com", wa: "", tk: ""
             },
             banners: [
-                { id: "1", title: "Congreso de Jóvenes 2026", subtitle: "Próximo Sábado - 4:00 PM", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200", btnText: "Más Info", link: "#contacto" }
+                { id: "1", title: "Congreso de Jóvenes 2026", subtitle: "Próximo Sábado - 4:00 PM", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200", details: "Únete a nuestro gran congreso juvenil donde compartiremos alabanza, dinámicas, palabra de Dios y convivencia especial.", photos: ["https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200", "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1200"] }
             ],
             menuItems: [
                 { id: "1", title: "Inicio", link: "#inicio" },
-                { id: "2", title: "Biblia RV1960", link: "#biblia" },
-                { id: "3", title: "Anuncios", link: "#banner-eventos" },
-                { id: "4", title: "Taber TV", link: "#en-vivo" },
-                { id: "5", title: "Radios En Vivo", link: "#radio" },
-                { id: "6", title: "Sermones", link: "#transmision" },
-                { id: "7", title: "Blog Pastoral", link: "#blog" },
-                { id: "8", title: "Horarios", link: "#horarios" },
-                { id: "9", title: "Galería", link: "#galeria" }
+                { id: "2", title: "Plan de Salvación", link: "#plan-salvacion" },
+                { id: "3", title: "Colegio de Teología", link: "#teologia" },
+                { id: "4", title: "Biblia RV1960", link: "#biblia" },
+                { id: "5", title: "Anuncios", link: "#banner-eventos" },
+                { id: "6", title: "Taber TV", link: "#en-vivo" },
+                { id: "7", title: "Radios En Vivo", link: "#radio" },
+                { id: "8", title: "Sermones", link: "#transmision" },
+                { id: "9", title: "Blog Pastoral", link: "#blog" },
+                { id: "10", title: "Horarios", link: "#horarios" },
+                { id: "11", title: "Galería", link: "#galeria" }
+            ],
+            teologiaCycles: [
+                { id: "1", cycleName: "Ciclo I - Fundamentos Teológicos", schedule: "Sábados de 8:00 AM a 12:00 PM", subjects: ["Bibliología y Hermenéutica", "Teología Sistemática I", "Evangelismo Personal"] },
+                { id: "2", cycleName: "Ciclo II - Historia y Epístolas", schedule: "Domingos de 2:00 PM a 5:00 PM", subjects: ["Epístolas Paulinas", "Historia de la Iglesia", "Homilética y Predicación"] }
             ],
             blogs: [
                 { id: "1", title: "Perseverando en la prueba", author: "Pastor Roger", date: "1 Oct, 2026", img: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1200", content: "La palabra de Dios nos recuerda en Santiago 1:12..." }
             ],
             videos: [
-                { id: "1", title: "El Poder de la Oración", author: "Pastor Roger", ytId: "dQw4w9WgXcQ", audioUrl: "https://jumpshare.com/v/sample.mp3" },
-                { id: "2", title: "Caminando en Integridad", author: "David Barahona", ytId: "dQw4w9WgXcQ", audioUrl: "" }
+                { id: "1", title: "El Poder de la Oración", author: "Pastor Roger", ytId: "dQw4w9WgXcQ", audioUrl: "https://jumpshare.com/v/sample.mp3" }
             ],
             albums: [
                 { id: "1", title: "Culto Especial de Aniversario", desc: "Momentos inolvidables", cover: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800", photos: ["https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800"] }
@@ -837,6 +890,7 @@
                     config: { ...defaultData.config, ...(data.config || {}) },
                     banners: Object.values(data.banners || defaultData.banners),
                     menuItems: Object.values(data.menuItems || defaultData.menuItems),
+                    teologiaCycles: Object.values(data.teologiaCycles || defaultData.teologiaCycles),
                     blogs: Object.values(data.blogs || defaultData.blogs),
                     videos: Object.values(data.videos || defaultData.videos),
                     albums: Object.values(data.albums || defaultData.albums),
@@ -905,13 +959,15 @@
 
             const b = banners[index];
             container.innerHTML = `
-                <div class="relative w-full h-full min-h-[300px] sm:min-h-[420px] flex items-center justify-center transition-all duration-700">
+                <div onclick="openBannerSubpage('${b.id}')" class="relative w-full h-full min-h-[300px] sm:min-h-[420px] flex items-center justify-center transition-all duration-700">
                     <img src="${b.img}" alt="${b.title}" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30"></div>
                     <div class="relative z-10 text-center text-white px-6 max-w-3xl space-y-3">
                         ${b.subtitle ? `<span class="inline-block bg-amber-500 text-black text-xs font-black uppercase px-3 py-1 rounded-full shadow">${b.subtitle}</span>` : ''}
                         <h2 class="text-2xl sm:text-4xl font-extrabold drop-shadow">${b.title}</h2>
-                        ${b.btnText ? `<a href="${b.link || '#contacto'}" class="inline-block bg-primary text-white font-bold px-6 py-3 rounded-xl shadow hover:scale-105 transition mt-2">${b.btnText}</a>` : ''}
+                        <button class="inline-block bg-primary hover:bg-secondary text-white font-bold px-6 py-3 rounded-xl shadow hover:scale-105 transition mt-2">
+                            Ver Galería y Detalles <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
                     </div>
                 </div>
             `;
@@ -920,6 +976,55 @@
                 <button onclick="goToBannerSlide(${i})" class="w-3 h-3 rounded-full transition-all duration-300 ${i === index ? 'bg-amber-400 w-8' : 'bg-white/50 hover:bg-white'}"></button>
             `).join('');
         }
+
+        window.openBannerSubpage = (bannerId) => {
+            const b = (currentData.banners || []).find(item => item.id === bannerId);
+            if (!b) return;
+
+            const mainContainer = document.getElementById('main-sections-container');
+            const dedicatedContainer = document.getElementById('dedicated-view-container');
+            const dedicatedContent = document.getElementById('dedicated-content');
+            const backBar = document.getElementById('back-to-home-bar');
+            const badge = document.getElementById('current-view-badge');
+
+            mainContainer.classList.add('hidden');
+            dedicatedContainer.classList.remove('hidden');
+            badge.innerText = "Detalles del Anuncio";
+            backBar.classList.remove('hidden');
+
+            const photosList = b.photos && b.photos.length > 0 ? b.photos : [b.img];
+
+            dedicatedContent.innerHTML = `
+                <div class="max-w-4xl mx-auto space-y-8" data-aos="fade-up">
+                    <div class="text-center space-y-3">
+                        ${b.subtitle ? `<span class="bg-amber-500/20 text-amber-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">${b.subtitle}</span>` : ''}
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900">${b.title}</h1>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-200 space-y-6">
+                        <img src="${b.img}" class="w-full h-80 sm:h-96 object-cover rounded-2xl shadow">
+                        <div class="text-gray-700 text-base sm:text-lg leading-relaxed whitespace-pre-line">
+                            ${b.details || 'No hay información detallada adicional para este anuncio.'}
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-gray-900 border-b pb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-images text-primary"></i>
+                            <span>Galería de Imágenes</span>
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${photosList.map(pUrl => `
+                                <img src="${pUrl}" class="w-full h-48 object-cover rounded-2xl shadow hover:scale-105 transition duration-300">
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => { if (window.AOS) AOS.refresh(); }, 100);
+        };
 
         window.nextBannerSlide = () => {
             const banners = currentData.banners || [];
@@ -981,7 +1086,114 @@
                 return;
             }
 
-            if (cleanLink === '#biblia') {
+            if (cleanLink === '#plan-salvacion') {
+                mainContainer.classList.add('hidden');
+                dedicatedContainer.classList.remove('hidden');
+                badge.innerText = "Plan de Salvación";
+                backBar.classList.remove('hidden');
+
+                dedicatedContent.innerHTML = `
+                    <div class="max-w-4xl mx-auto space-y-10" data-aos="fade-up">
+                        <div class="text-center space-y-4">
+                            <span class="bg-amber-500/20 text-amber-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500/30">
+                                Tabernáculo Bíblico Bautista Amigos de Israel
+                            </span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900">El Plan de Salvación</h1>
+                            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Dios te ama y tiene un propósito maravilloso para tu vida. Conoce el camino para recibir la vida eterna.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-blue-100 flex items-start space-x-4">
+                                <div class="bg-primary text-white w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-900">Dios te ama y ofrece un plan para tu vida</h3>
+                                    <p class="text-gray-600">"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna." — <strong class="text-primary">Juan 3:16</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-blue-100 flex items-start space-x-4">
+                                <div class="bg-primary text-white w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-900">El ser humano es pecador y está separado de Dios</h3>
+                                    <p class="text-gray-600">"Por cuanto todos pecaron, y están destituidos de la gloria de Dios." — <strong class="text-primary">Romanos 3:23</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-blue-100 flex items-start space-x-4">
+                                <div class="bg-primary text-white w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-900">Jesucristo es el único camino hacia Dios</h3>
+                                    <p class="text-gray-600">"Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí." — <strong class="text-primary">Juan 14:6</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-blue-100 flex items-start space-x-4">
+                                <div class="bg-primary text-white w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-900">Debemos recibir a Cristo personalmente</h3>
+                                    <p class="text-gray-600">"Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios." — <strong class="text-primary">Juan 1:12</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-blue-900 to-indigo-950 text-white p-8 sm:p-12 rounded-3xl shadow-2xl text-center space-y-6">
+                            <h3 class="text-2xl sm:text-3xl font-bold">Oración de Fe y Aceptación</h3>
+                            <p class="text-blue-100 italic font-serif text-lg leading-relaxed max-w-2xl mx-auto">
+                                "Señor Jesús, reconozco que soy pecador. Creo que moriste por mí en la cruz y resucitaste. Te abro las puertas de mi corazón y te recibo como mi Señor y Salvador personal. Perdona mis pecados y escribe mi nombre en el Libro de la Vida. Amén."
+                            </p>
+                            <div class="pt-2">
+                                <button onclick="scrollToSection('#contacto')" class="bg-amber-400 hover:bg-amber-500 text-gray-950 font-bold px-8 py-3.5 rounded-xl shadow transition">
+                                    ¿Hiciste esta oración? Escríbenos aquí
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => { if (window.AOS) AOS.refresh(); }, 100);
+            } else if (cleanLink === '#teologia') {
+                mainContainer.classList.add('hidden');
+                dedicatedContainer.classList.remove('hidden');
+                badge.innerText = "Colegio de Teología";
+                backBar.classList.remove('hidden');
+
+                const cycles = currentData.teologiaCycles || [];
+                const cyclesHTML = cycles.map(c => `
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-200 space-y-4" data-aos="fade-up">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 gap-2">
+                            <h3 class="text-2xl font-bold text-gray-900">${c.cycleName}</h3>
+                            <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase">
+                                <i class="fa-solid fa-clock mr-1"></i> ${c.schedule}
+                            </span>
+                        </div>
+                        <h4 class="font-bold text-gray-700 text-sm uppercase tracking-wider">Pensum / Asignaturas del Ciclo:</h4>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${(c.subjects || []).map(s => `
+                                <li class="flex items-center space-x-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                                    <i class="fa-solid fa-book-bookmark text-primary"></i>
+                                    <span class="text-gray-800 font-semibold text-sm">${s}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('');
+
+                dedicatedContent.innerHTML = `
+                    <div class="max-w-5xl mx-auto space-y-8" data-aos="fade-up">
+                        <div class="text-center space-y-3">
+                            <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Formación Pastoral y Laica</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900">Colegio de Teología</h1>
+                            <p class="text-gray-500 text-lg max-w-2xl mx-auto">Capacitándote para el ministerio y el conocimiento profundo de la Palabra de Dios.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            ${cyclesHTML || '<p class="text-center text-gray-500 py-8">No hay ciclos o materias registradas actualmente.</p>'}
+                        </div>
+                    </div>
+                `;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => { if (window.AOS) AOS.refresh(); }, 100);
+            } else if (cleanLink === '#biblia') {
                 mainContainer.classList.add('hidden');
                 dedicatedContainer.classList.remove('hidden');
                 badge.innerText = "Santa Biblia RV1960";
@@ -1097,7 +1309,6 @@
             }
         };
 
-        // RENDERING DE SERMONES CON REPRODUCTOR Y DESCARGA DE AUDIO JUMPSHARE
         function renderSermonsHTML(videoList) {
             if (!videoList || videoList.length === 0) return `<p class="text-gray-500">No hay sermones registrados.</p>`;
             return videoList.map(v => {
@@ -1201,9 +1412,8 @@
             
             const rawUrl = id === '1' 
                 ? (currentData.config.radioUrl || "https://radiobautista106uno.radiostream123.com/")
-                : (currentData.config.radioUrl2 || "https://radioneumastereo.radio12345.com/?fbclid=IwY2xjawUs5nNleHRuA2FlbQIxMABwZG9mBWJyaWQRMThiUGpGNERBcm9kb1Y4U01zcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeoluG4zzfR42pZJXuxCFtiRTla98BwxSyLSR50z2iInjqo0UA7rDky_M0Yvg_aem_wIUELHv9GCNAB2tmNcqtYw");
+                : (currentData.config.radioUrl2 || "https://radioneumastereo.radio12345.com/");
 
-            // Pausar la otra radio si está sonando
             if (otherPlayer && !otherPlayer.paused) {
                 otherPlayer.pause();
                 document.getElementById(`radio-icon-${otherId}`).className = "fa-solid fa-play";
@@ -1248,7 +1458,7 @@
         function renderPublicSite() {
             const data = currentData;
             document.getElementById('dynamic-nav-links').innerHTML = (data.menuItems || []).map(item => `
-                <button onclick="showSingleView('${item.link}')" class="text-gray-600 hover:text-primary transition font-medium">${item.title}</button>
+                <button onclick="showSingleView('${item.link}')" class="text-gray-600 hover:text-primary transition font-medium whitespace-nowrap">${item.title}</button>
             `).join('');
 
             // LOGO
@@ -1324,7 +1534,7 @@
 
         window.closeAlbumModal = () => document.getElementById('album-view-modal').classList.add('hidden');
 
-        // RENDERING DE LISTAS ADMIN CON EDITAR Y ELIMINAR
+        // RENDERING DE LISTAS ADMIN
         function renderAdminLists() {
             const data = currentData;
             document.getElementById('cfg-brand').value = data.config.brand || "";
@@ -1356,6 +1566,20 @@
                     <div class="flex items-center space-x-2 flex-shrink-0">
                         <button onclick="editBanner('${b.id}')" class="bg-blue-100 text-blue-700 p-2 rounded-lg hover:bg-blue-200"><i class="fa-solid fa-pen text-xs"></i></button>
                         <button onclick="deleteItem('banners', '${b.id}')" class="bg-red-100 text-red-700 p-2 rounded-lg hover:bg-red-200"><i class="fa-solid fa-trash text-xs"></i></button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Colegio Teologia
+            document.getElementById('admin-teologia-list').innerHTML = (data.teologiaCycles || []).map(c => `
+                <div class="bg-gray-50 p-3 rounded-xl border flex items-center justify-between">
+                    <div>
+                        <span class="font-bold text-sm text-gray-900">${c.cycleName}</span>
+                        <span class="text-xs text-gray-500 ml-2">(${c.schedule})</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="editTeologiaCycle('${c.id}')" class="bg-blue-100 text-blue-700 p-2 rounded-lg hover:bg-blue-200"><i class="fa-solid fa-pen text-xs"></i></button>
+                        <button onclick="deleteItem('teologiaCycles', '${c.id}')" class="bg-red-100 text-red-700 p-2 rounded-lg hover:bg-red-200"><i class="fa-solid fa-trash text-xs"></i></button>
                     </div>
                 </div>
             `).join('');
@@ -1452,6 +1676,8 @@
             document.getElementById('banner-title').value = b.title;
             document.getElementById('banner-subtitle').value = b.subtitle || '';
             document.getElementById('banner-img').value = b.img;
+            document.getElementById('banner-details').value = b.details || '';
+            document.getElementById('banner-photos').value = (b.photos || []).join('\n');
             document.getElementById('banner-btn-submit').innerText = "Actualizar Banner";
             document.getElementById('banner-btn-cancel').classList.remove('hidden');
         };
@@ -1461,8 +1687,30 @@
             document.getElementById('banner-title').value = '';
             document.getElementById('banner-subtitle').value = '';
             document.getElementById('banner-img').value = '';
+            document.getElementById('banner-details').value = '';
+            document.getElementById('banner-photos').value = '';
             document.getElementById('banner-btn-submit').innerText = "Guardar Banner";
             document.getElementById('banner-btn-cancel').classList.add('hidden');
+        };
+
+        window.editTeologiaCycle = (id) => {
+            const c = (currentData.teologiaCycles || []).find(item => item.id === id);
+            if (!c) return;
+            document.getElementById('teo-edit-id').value = c.id;
+            document.getElementById('teo-cycle-name').value = c.cycleName;
+            document.getElementById('teo-schedule').value = c.schedule;
+            document.getElementById('teo-subjects').value = (c.subjects || []).join('\n');
+            document.getElementById('teo-btn-submit').innerText = "Actualizar Ciclo";
+            document.getElementById('teo-btn-cancel').classList.remove('hidden');
+        };
+
+        window.cancelTeologiaEdit = () => {
+            document.getElementById('teo-edit-id').value = '';
+            document.getElementById('teo-cycle-name').value = '';
+            document.getElementById('teo-schedule').value = '';
+            document.getElementById('teo-subjects').value = '';
+            document.getElementById('teo-btn-submit').innerText = "Guardar Ciclo Teológico";
+            document.getElementById('teo-btn-cancel').classList.add('hidden');
         };
 
         window.editMenuItem = (id) => {
@@ -1590,7 +1838,7 @@
         window.closeAdminPanel = () => document.getElementById('admin-panel').classList.add('hidden');
 
         window.switchTab = (tabName) => {
-            ['general', 'banners', 'menu', 'blog', 'videos', 'galeria', 'horarios'].forEach(t => {
+            ['general', 'banners', 'teologia', 'menu', 'blog', 'videos', 'galeria', 'horarios'].forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
                 document.getElementById(`tab-btn-${t}`).classList.remove('text-primary', 'border-b-2', 'border-primary');
             });
@@ -1627,7 +1875,9 @@
                 id: editId || Date.now().toString(),
                 title: document.getElementById('banner-title').value,
                 subtitle: document.getElementById('banner-subtitle').value,
-                img: document.getElementById('banner-img').value
+                img: document.getElementById('banner-img').value,
+                details: document.getElementById('banner-details').value,
+                photos: document.getElementById('banner-photos').value.split('\n').filter(p => p.trim() !== '')
             };
 
             if (!currentData.banners) currentData.banners = [];
@@ -1639,7 +1889,29 @@
             }
             saveData(currentData);
             cancelBannerEdit();
-            alert('Banner guardado correctamente!');
+            alert('Banner/Anuncio guardado correctamente!');
+        };
+
+        window.saveTeologiaCycle = (e) => {
+            e.preventDefault();
+            const editId = document.getElementById('teo-edit-id').value;
+            const cycleData = {
+                id: editId || Date.now().toString(),
+                cycleName: document.getElementById('teo-cycle-name').value,
+                schedule: document.getElementById('teo-schedule').value,
+                subjects: document.getElementById('teo-subjects').value.split('\n').filter(s => s.trim() !== '')
+            };
+
+            if (!currentData.teologiaCycles) currentData.teologiaCycles = [];
+            if (editId) {
+                const idx = currentData.teologiaCycles.findIndex(c => c.id === editId);
+                if (idx !== -1) currentData.teologiaCycles[idx] = cycleData;
+            } else {
+                currentData.teologiaCycles.push(cycleData);
+            }
+            saveData(currentData);
+            cancelTeologiaEdit();
+            alert('Ciclo del Colegio de Teología guardado!');
         };
 
         window.saveMenuItem = (e) => {
