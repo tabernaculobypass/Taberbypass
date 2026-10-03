@@ -50,36 +50,35 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- HEADER & NAVBAR FLEXIBLE EN MÚLTIPLES LÍNEAS -->
-    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 transition-all duration-300 border-b border-gray-100 py-3">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-3">
+    <!-- HEADER & NAVBAR LINEAL CON PESTAÑA DESPLEGABLE "OTROS" -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 transition-all duration-300 border-b border-gray-100 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex justify-between items-center gap-4">
                 
-                <!-- LOGO Y BOTÓN ADMIN -->
-                <div class="flex justify-between items-center w-full lg:w-auto gap-4 flex-shrink-0">
-                    <div class="flex items-center space-x-3 cursor-pointer group" onclick="showSingleView('#inicio')">
-                        <div id="nav-brand-logo-container" class="bg-primary text-white rounded-xl shadow-md flex items-center justify-center overflow-hidden w-11 h-11 group-hover:scale-105 transition duration-300">
-                            <i id="nav-brand-icon" class="fa-solid fa-church text-xl"></i>
-                            <img id="nav-brand-img" src="" alt="Logo" class="hidden w-full h-full object-cover rounded-xl">
-                        </div>
-                        <div>
-                            <span id="nav-brand-title" class="text-lg font-bold tracking-tight text-gray-900 block group-hover:text-primary transition leading-none">Taber by Pass</span>
-                            <span id="nav-brand-subtitle" class="text-[10px] text-gray-500 block uppercase font-medium mt-1">Una iglesia de Fe</span>
-                        </div>
+                <!-- LOGO Y TÍTULO -->
+                <div class="flex items-center space-x-3 cursor-pointer group flex-shrink-0" onclick="showSingleView('#inicio')">
+                    <div id="nav-brand-logo-container" class="bg-primary text-white rounded-xl shadow-md flex items-center justify-center overflow-hidden w-11 h-11 group-hover:scale-105 transition duration-300">
+                        <i id="nav-brand-icon" class="fa-solid fa-church text-xl"></i>
+                        <img id="nav-brand-img" src="" alt="Logo" class="hidden w-full h-full object-cover rounded-xl">
                     </div>
-
-                    <div class="flex items-center space-x-2">
-                        <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold shadow transition hover:shadow-md flex items-center space-x-1.5 duration-200">
-                            <i class="fa-solid fa-lock text-[10px]"></i>
-                            <span>Panel Admin</span>
-                        </button>
+                    <div>
+                        <span id="nav-brand-title" class="text-lg font-bold tracking-tight text-gray-900 block group-hover:text-primary transition leading-none">Taber by Pass</span>
+                        <span id="nav-brand-subtitle" class="text-[10px] text-gray-500 block uppercase font-medium mt-1">Una iglesia de Fe</span>
                     </div>
                 </div>
 
-                <!-- NAVEGACIÓN COMPLETA MULTILÍNEA -->
-                <nav id="dynamic-nav-links" class="flex flex-wrap items-center justify-center lg:justify-end gap-1.5 font-medium text-xs xl:text-sm w-full lg:w-auto pt-2 lg:pt-0">
-                    <!-- Enlaces generados automáticamente por JavaScript -->
+                <!-- NAVEGACIÓN PRINCIPAL COMPLETAMENTE LINEAL -->
+                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-xs xl:text-sm overflow-x-auto whitespace-nowrap py-1">
+                    <!-- Los botones principales y el menú desplegable "Otros" se renderizan dinámicamente con JS -->
                 </nav>
+
+                <!-- BOTÓN ACCESO ADMIN -->
+                <div class="flex items-center space-x-2 flex-shrink-0">
+                    <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold shadow transition hover:shadow-md flex items-center space-x-1.5 duration-200">
+                        <i class="fa-solid fa-lock text-[10px]"></i>
+                        <span>Panel Admin</span>
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -726,7 +725,7 @@
     <!-- AOS JS CDN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- MÓDULO PRINCIPAL DE JAVASCRIPT CON FIREBASE -->
+    <!-- MÓDULO PRINCIPAL DE JAVASCRIPT CON FIREBASE Y NAVEGACIÓN COMPACTA LINEAL -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -761,7 +760,6 @@
             { text: "Jehová es mi luz y mi salvación; ¿de quién temeré?", ref: "Salmos 27:1" }
         ];
 
-        // ENLACES DEL MENÚ OBLIGATORIOS POR DEFECTO
         const mandatoryMenuItems = [
             { id: "1", title: "Inicio", link: "#inicio" },
             { id: "2", title: "Plan de Salvación", link: "#plan-salvacion" },
@@ -1467,14 +1465,39 @@
         function renderPublicSite() {
             const data = currentData;
             
-            // RENDERING MENÚ DE ESCRITORIO CON DISEÑO REDONDEADO MULTILÍNEA
-            document.getElementById('dynamic-nav-links').innerHTML = (data.menuItems || []).map(item => `
-                <button onclick="showSingleView('${item.link}')" class="text-gray-700 hover:text-primary hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition font-medium whitespace-nowrap text-xs xl:text-sm">
+            // FILTRADO DE MENÚ: SEPARAR ELEMENTOS PRINCIPALES Y MENÚ DESPLEGABLE "OTROS"
+            const dropdownLinks = ['#plan-salvacion', '#biblia', '#banner-eventos', '#galeria'];
+            
+            const mainNavItems = (data.menuItems || []).filter(item => !dropdownLinks.includes(item.link));
+            const dropdownItems = (data.menuItems || []).filter(item => dropdownLinks.includes(item.link));
+
+            let navHTML = mainNavItems.map(item => `
+                <button onclick="showSingleView('${item.link}')" class="text-gray-700 hover:text-primary hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition font-semibold whitespace-nowrap">
                     ${item.title}
                 </button>
             `).join('');
 
-            // LOGO
+            // PESTAÑA DESPLEGABLE "OTROS"
+            navHTML += `
+                <div class="relative group inline-block text-left">
+                    <button class="text-gray-700 hover:text-primary hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition font-semibold whitespace-nowrap flex items-center space-x-1">
+                        <span>Otros</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute right-0 mt-1 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 hidden group-hover:block transition duration-200 z-50">
+                        ${dropdownItems.map(subItem => `
+                            <button onclick="showSingleView('${subItem.link}')" class="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-primary transition flex items-center justify-between">
+                                <span>${subItem.title}</span>
+                                <i class="fa-solid fa-angle-right text-[10px] text-gray-400"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('dynamic-nav-links').innerHTML = navHTML;
+
+            // LOGO Y DATOS
             const brandImg = document.getElementById('nav-brand-img');
             const brandIcon = document.getElementById('nav-brand-icon');
             if (data.config.logoUrl && data.config.logoUrl.trim() !== "") {
