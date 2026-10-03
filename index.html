@@ -47,56 +47,40 @@
             }
         }
     </script>
-    <style>
-        /* Ocultar barra de desplazamiento visual manteniendo funcionalidad */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- HEADER & NAVBAR ORDENADO -->
-    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 transition-all duration-300 border-b border-gray-100">
+    <!-- HEADER & NAVBAR FLEXIBLE EN MÚLTIPLES LÍNEAS -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 transition-all duration-300 border-b border-gray-100 py-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20 gap-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-3">
                 
-                <!-- LOGO / TÍTULO -->
-                <div class="flex items-center space-x-3 cursor-pointer group flex-shrink-0" onclick="showSingleView('#inicio')">
-                    <div id="nav-brand-logo-container" class="bg-primary text-white rounded-xl shadow-md flex items-center justify-center overflow-hidden w-11 h-11 group-hover:scale-105 transition duration-300">
-                        <i id="nav-brand-icon" class="fa-solid fa-church text-xl"></i>
-                        <img id="nav-brand-img" src="" alt="Logo" class="hidden w-full h-full object-cover rounded-xl">
+                <!-- LOGO Y BOTÓN ADMIN -->
+                <div class="flex justify-between items-center w-full lg:w-auto gap-4 flex-shrink-0">
+                    <div class="flex items-center space-x-3 cursor-pointer group" onclick="showSingleView('#inicio')">
+                        <div id="nav-brand-logo-container" class="bg-primary text-white rounded-xl shadow-md flex items-center justify-center overflow-hidden w-11 h-11 group-hover:scale-105 transition duration-300">
+                            <i id="nav-brand-icon" class="fa-solid fa-church text-xl"></i>
+                            <img id="nav-brand-img" src="" alt="Logo" class="hidden w-full h-full object-cover rounded-xl">
+                        </div>
+                        <div>
+                            <span id="nav-brand-title" class="text-lg font-bold tracking-tight text-gray-900 block group-hover:text-primary transition leading-none">Taber by Pass</span>
+                            <span id="nav-brand-subtitle" class="text-[10px] text-gray-500 block uppercase font-medium mt-1">Una iglesia de Fe</span>
+                        </div>
                     </div>
-                    <div>
-                        <span id="nav-brand-title" class="text-lg font-bold tracking-tight text-gray-900 block group-hover:text-primary transition leading-none">Taber by Pass</span>
-                        <span id="nav-brand-subtitle" class="text-[10px] text-gray-500 block uppercase font-medium mt-1">Una iglesia de Fe</span>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold shadow transition hover:shadow-md flex items-center space-x-1.5 duration-200">
+                            <i class="fa-solid fa-lock text-[10px]"></i>
+                            <span>Panel Admin</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- DESKTOP NAV CON SCROLL HORIZONTAL DISCRETO -->
-                <nav id="dynamic-nav-links" class="hidden lg:flex items-center space-x-1 font-medium text-xs xl:text-sm overflow-x-auto no-scrollbar py-2 max-w-full">
-                    <!-- Enlaces generados automáticamente -->
+                <!-- NAVEGACIÓN COMPLETA MULTILÍNEA -->
+                <nav id="dynamic-nav-links" class="flex flex-wrap items-center justify-center lg:justify-end gap-1.5 font-medium text-xs xl:text-sm w-full lg:w-auto pt-2 lg:pt-0">
+                    <!-- Enlaces generados automáticamente por JavaScript -->
                 </nav>
 
-                <!-- BOTÓN ACCIONES / ADMIN Y MENÚ MÓVIL -->
-                <div class="flex items-center space-x-2 flex-shrink-0">
-                    <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-3 py-2 rounded-xl text-xs font-semibold shadow transition hover:shadow-md flex items-center space-x-1.5 duration-200">
-                        <i class="fa-solid fa-lock text-[10px]"></i>
-                        <span class="hidden sm:inline">Panel Admin</span>
-                    </button>
-
-                    <!-- MENÚ HAMBURGUESA PARA PANTALLAS PEQUEÑAS / MEDIANAS -->
-                    <button onclick="toggleMobileMenu()" class="lg:hidden bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition">
-                        <i class="fa-solid fa-bars text-lg"></i>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- MENÚ DESPLEGABLE MÓVIL -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-2 shadow-lg max-h-[70vh] overflow-y-auto">
-            <div id="mobile-nav-links" class="flex flex-col space-y-1">
-                <!-- Enlaces móviles generados automáticamente -->
             </div>
         </div>
     </header>
@@ -142,7 +126,7 @@
                 </div>
             </section>
 
-            <!-- TARJETA VERSÍCULO DEL DÍA CON FONDOS DE PAISAJES SELECCIONABLES -->
+            <!-- TARJETA VERSÍCULO DEL DÍA -->
             <section id="versiculo-dia-section" class="py-12 bg-gradient-to-b from-blue-900 to-indigo-950 text-white px-4 sm:px-6 lg:px-8 border-b">
                 <div class="max-w-4xl mx-auto text-center space-y-6" data-aos="zoom-in">
                     <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500/30">
@@ -447,7 +431,7 @@
         </header>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-8">
-            <div class="flex border-b border-gray-300 space-x-6 overflow-x-auto no-scrollbar">
+            <div class="flex border-b border-gray-300 space-x-6 overflow-x-auto">
                 <button onclick="switchTab('general')" id="tab-btn-general" class="pb-3 font-semibold text-primary border-b-2 border-primary transition whitespace-nowrap">Config y Redes</button>
                 <button onclick="switchTab('banners')" id="tab-btn-banners" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Banners/Anuncios</button>
                 <button onclick="switchTab('teologia')" id="tab-btn-teologia" class="pb-3 font-semibold text-gray-500 hover:text-gray-800 transition whitespace-nowrap">Colegio Teología</button>
@@ -792,11 +776,6 @@
             { id: "11", title: "Galería", link: "#galeria" }
         ];
 
-        window.toggleMobileMenu = () => {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        };
-
         function loadDailyVerse() {
             const todayIndex = new Date().getDate() % dailyVersesList.length;
             const verse = dailyVersesList[todayIndex];
@@ -1082,7 +1061,6 @@
             document.getElementById('main-sections-container').classList.remove('hidden');
             document.getElementById('dedicated-view-container').classList.add('hidden');
             document.getElementById('back-to-home-bar').classList.add('hidden');
-            document.getElementById('mobile-menu').classList.add('hidden');
 
             let selector = targetHash.trim();
             if (!selector.startsWith('#')) selector = '#' + selector;
@@ -1104,7 +1082,6 @@
             const dedicatedContent = document.getElementById('dedicated-content');
             const backBar = document.getElementById('back-to-home-bar');
             const badge = document.getElementById('current-view-badge');
-            document.getElementById('mobile-menu').classList.add('hidden');
 
             let cleanLink = targetLink ? targetLink.trim() : '#inicio';
             if (!cleanLink.startsWith('#')) cleanLink = '#' + cleanLink;
@@ -1490,16 +1467,10 @@
         function renderPublicSite() {
             const data = currentData;
             
-            // RENDERING MENÚ DE ESCRITORIO
+            // RENDERING MENÚ DE ESCRITORIO CON DISEÑO REDONDEADO MULTILÍNEA
             document.getElementById('dynamic-nav-links').innerHTML = (data.menuItems || []).map(item => `
-                <button onclick="showSingleView('${item.link}')" class="text-gray-600 hover:text-primary hover:bg-gray-50 px-3 py-2 rounded-lg transition font-medium whitespace-nowrap text-xs xl:text-sm">${item.title}</button>
-            `).join('');
-
-            // RENDERING MENÚ MÓVIL
-            document.getElementById('mobile-nav-links').innerHTML = (data.menuItems || []).map(item => `
-                <button onclick="showSingleView('${item.link}')" class="text-left text-gray-700 hover:text-primary hover:bg-blue-50 px-4 py-2.5 rounded-xl transition font-medium text-sm w-full border-b border-gray-50 flex items-center justify-between">
-                    <span>${item.title}</span>
-                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                <button onclick="showSingleView('${item.link}')" class="text-gray-700 hover:text-primary hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition font-medium whitespace-nowrap text-xs xl:text-sm">
+                    ${item.title}
                 </button>
             `).join('');
 
