@@ -67,9 +67,9 @@
                     </div>
                 </div>
 
-                <!-- NAVEGACIÓN PRINCIPAL COMPLETAMENTE LINEAL -->
-                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-xs xl:text-sm overflow-x-auto whitespace-nowrap py-1">
-                    <!-- Los botones principales y el menú desplegable "Otros" se renderizan dinámicamente con JS -->
+                <!-- NAVEGACIÓN PRINCIPAL LINEAL -->
+                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-xs xl:text-sm whitespace-nowrap py-1">
+                    <!-- Los botones principales y la pestaña desplegable "Otros" se renderizan dinámicamente -->
                 </nav>
 
                 <!-- BOTÓN ACCESO ADMIN -->
@@ -725,7 +725,7 @@
     <!-- AOS JS CDN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- MÓDULO PRINCIPAL DE JAVASCRIPT CON FIREBASE Y NAVEGACIÓN COMPACTA LINEAL -->
+    <!-- MÓDULO PRINCIPAL DE JAVASCRIPT CON FIREBASE Y MENÚ DESPLEGABLE "OTROS" -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -1074,7 +1074,27 @@
             }, 50);
         };
 
+        window.toggleDropdownOtros = () => {
+            const menu = document.getElementById('dropdown-otros-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        };
+
+        // CERRAR DESPLEGABLE AL HACER CLIC FUERA
+        document.addEventListener('click', (e) => {
+            const container = document.getElementById('dropdown-otros-container');
+            const menu = document.getElementById('dropdown-otros-menu');
+            if (container && menu && !container.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
         window.showSingleView = (targetLink) => {
+            // CERRAR MENÚ DESPLEGABLE SI ESTÁ ABIERTO
+            const dropdownMenu = document.getElementById('dropdown-otros-menu');
+            if (dropdownMenu) dropdownMenu.classList.add('hidden');
+
             const mainContainer = document.getElementById('main-sections-container');
             const dedicatedContainer = document.getElementById('dedicated-view-container');
             const dedicatedContent = document.getElementById('dedicated-content');
@@ -1465,7 +1485,7 @@
         function renderPublicSite() {
             const data = currentData;
             
-            // FILTRADO DE MENÚ: SEPARAR ELEMENTOS PRINCIPALES Y MENÚ DESPLEGABLE "OTROS"
+            // SEPARAR ELEMENTOS PRINCIPALES Y MENÚ DESPLEGABLE DE OTROS
             const dropdownLinks = ['#plan-salvacion', '#biblia', '#banner-eventos', '#galeria'];
             
             const mainNavItems = (data.menuItems || []).filter(item => !dropdownLinks.includes(item.link));
@@ -1477,18 +1497,18 @@
                 </button>
             `).join('');
 
-            // PESTAÑA DESPLEGABLE "OTROS"
+            // PESTAÑA DESPLEGABLE "OTROS" INTERACTIVA
             navHTML += `
-                <div class="relative group inline-block text-left">
-                    <button class="text-gray-700 hover:text-primary hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition font-semibold whitespace-nowrap flex items-center space-x-1">
+                <div id="dropdown-otros-container" class="relative inline-block text-left">
+                    <button onclick="toggleDropdownOtros()" class="bg-gray-100 hover:bg-primary hover:text-white text-gray-800 px-3 py-1.5 rounded-lg transition font-bold whitespace-nowrap flex items-center space-x-1.5 shadow-sm border border-gray-200">
                         <span>Otros</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition group-hover:rotate-180"></i>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
                     </button>
-                    <div class="absolute right-0 mt-1 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 hidden group-hover:block transition duration-200 z-50">
+                    <div id="dropdown-otros-menu" class="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 hidden z-50 animate-fadeIn">
                         ${dropdownItems.map(subItem => `
-                            <button onclick="showSingleView('${subItem.link}')" class="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-primary transition flex items-center justify-between">
+                            <button onclick="showSingleView('${subItem.link}')" class="w-full text-left px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-blue-50 hover:text-primary transition flex items-center justify-between">
                                 <span>${subItem.title}</span>
-                                <i class="fa-solid fa-angle-right text-[10px] text-gray-400"></i>
+                                <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
                             </button>
                         `).join('')}
                     </div>
@@ -2034,7 +2054,7 @@
                 const idx = currentData.albums.findIndex(a => a.id === editId);
                 if (idx !== -1) currentData.albums[idx] = albumData;
             } else {
-                currentData.albums.unshift(albumData);
+                currentData.albums.push(albumData);
             }
             saveData(currentData);
             cancelAlbumEdit();
