@@ -66,14 +66,14 @@
                     </div>
                 </div>
 
-                <!-- DESKTOP NAV DINÁMICO -->
-                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-5 font-medium text-xs lg:text-sm">
+                <!-- DESKTOP NAV DINÁMICO CON SCROLL HORIZONTAL SI ES NECESARIO -->
+                <nav id="dynamic-nav-links" class="hidden md:flex items-center space-x-4 font-medium text-xs lg:text-sm overflow-x-auto py-2">
                     <!-- Enlaces generados automáticamente -->
                 </nav>
 
                 <!-- ADMIN BUTTON -->
                 <div class="flex items-center">
-                    <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium shadow transition hover:shadow-lg hover:-translate-y-0.5 flex items-center space-x-2 duration-200">
+                    <button onclick="openLoginModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-3 py-2 rounded-lg text-xs font-medium shadow transition hover:shadow-lg hover:-translate-y-0.5 flex items-center space-x-1.5 duration-200">
                         <i class="fa-solid fa-lock text-xs"></i>
                         <span>Panel Admin</span>
                     </button>
@@ -174,12 +174,12 @@
                 </div>
             </section>
 
-            <!-- CARRUSEL DE BANNERS (CLIC NAVEGA A SUBPÁGINA DEDICADA) -->
+            <!-- CARRUSEL DE BANNERS -->
             <section id="banner-eventos" class="py-12 bg-gray-100 border-b border-gray-200 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto" data-aos="fade-up">
                     <div class="text-center mb-6">
                         <span class="bg-amber-500/10 text-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-amber-500/20">
-                            <i class="fa-solid fa-bullhorn mr-1"></i> Anuncios Especiales & Eventos (Haz clic para más detalles)
+                            <i class="fa-solid fa-bullhorn mr-1"></i> Anuncios Especiales & Eventos
                         </span>
                     </div>
 
@@ -212,7 +212,7 @@
                 </div>
             </section>
 
-            <!-- EMISORAS DE RADIO (RADIO BAUTISTA & NEUMA STEREO) -->
+            <!-- EMISORAS DE RADIO -->
             <section id="radio" class="py-16 bg-blue-950 text-white px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-10" data-aos="fade-up">
@@ -225,7 +225,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- RADIO BAUTISTA 106.1 FM -->
                         <div class="bg-gradient-to-br from-blue-900 to-blue-950 p-8 rounded-3xl shadow-xl border border-blue-800 flex flex-col justify-between" data-aos="zoom-in">
                             <div class="space-y-4 mb-6">
                                 <div class="w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-center text-2xl shadow-md animate-pulse">
@@ -247,7 +246,6 @@
                             </div>
                         </div>
 
-                        <!-- NEUMA STEREO -->
                         <div class="bg-gradient-to-br from-indigo-900 to-slate-900 p-8 rounded-3xl shadow-xl border border-indigo-800 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
                             <div class="space-y-4 mb-6">
                                 <div class="w-16 h-16 rounded-full bg-indigo-700 text-white flex items-center justify-center text-2xl shadow-md animate-pulse">
@@ -517,7 +515,7 @@
                 </form>
             </div>
 
-            <!-- TAB BANNERS CON INFORMACIÓN EXTENDIDA Y FOTOS -->
+            <!-- TAB BANNERS -->
             <div id="tab-banners" class="admin-tab bg-white rounded-2xl shadow-sm p-6 sm:p-8 space-y-6 hidden">
                 <h3 class="text-xl font-bold text-gray-900">Agregar o Modificar Banner / Anuncio</h3>
                 <form onsubmit="saveBanner(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border">
@@ -760,6 +758,21 @@
             { text: "Jehová es mi luz y mi salvación; ¿de quién temeré?", ref: "Salmos 27:1" }
         ];
 
+        // ENLACES DEL MENÚ OBLIGATORIOS POR DEFECTO
+        const mandatoryMenuItems = [
+            { id: "1", title: "Inicio", link: "#inicio" },
+            { id: "2", title: "Plan de Salvación", link: "#plan-salvacion" },
+            { id: "3", title: "Colegio de Teología", link: "#teologia" },
+            { id: "4", title: "Biblia RV1960", link: "#biblia" },
+            { id: "5", title: "Anuncios", link: "#banner-eventos" },
+            { id: "6", title: "Taber TV", link: "#en-vivo" },
+            { id: "7", title: "Radios En Vivo", link: "#radio" },
+            { id: "8", title: "Sermones", link: "#transmision" },
+            { id: "9", title: "Blog Pastoral", link: "#blog" },
+            { id: "10", title: "Horarios", link: "#horarios" },
+            { id: "11", title: "Galería", link: "#galeria" }
+        ];
+
         function loadDailyVerse() {
             const todayIndex = new Date().getDate() % dailyVersesList.length;
             const verse = dailyVersesList[todayIndex];
@@ -849,19 +862,7 @@
             banners: [
                 { id: "1", title: "Congreso de Jóvenes 2026", subtitle: "Próximo Sábado - 4:00 PM", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200", details: "Únete a nuestro gran congreso juvenil donde compartiremos alabanza, dinámicas, palabra de Dios y convivencia especial.", photos: ["https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200", "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1200"] }
             ],
-            menuItems: [
-                { id: "1", title: "Inicio", link: "#inicio" },
-                { id: "2", title: "Plan de Salvación", link: "#plan-salvacion" },
-                { id: "3", title: "Colegio de Teología", link: "#teologia" },
-                { id: "4", title: "Biblia RV1960", link: "#biblia" },
-                { id: "5", title: "Anuncios", link: "#banner-eventos" },
-                { id: "6", title: "Taber TV", link: "#en-vivo" },
-                { id: "7", title: "Radios En Vivo", link: "#radio" },
-                { id: "8", title: "Sermones", link: "#transmision" },
-                { id: "9", title: "Blog Pastoral", link: "#blog" },
-                { id: "10", title: "Horarios", link: "#horarios" },
-                { id: "11", title: "Galería", link: "#galeria" }
-            ],
+            menuItems: mandatoryMenuItems,
             teologiaCycles: [
                 { id: "1", cycleName: "Ciclo I - Fundamentos Teológicos", schedule: "Sábados de 8:00 AM a 12:00 PM", subjects: ["Bibliología y Hermenéutica", "Teología Sistemática I", "Evangelismo Personal"] },
                 { id: "2", cycleName: "Ciclo II - Historia y Epístolas", schedule: "Domingos de 2:00 PM a 5:00 PM", subjects: ["Epístolas Paulinas", "Historia de la Iglesia", "Homilética y Predicación"] }
@@ -886,10 +887,16 @@
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
+                // Verificar que el menú tenga las opciones de Plan de Salvación y Teología incorporadas si venían nulas de Firebase
+                let savedMenuItems = Object.values(data.menuItems || {});
+                if (savedMenuItems.length === 0 || !savedMenuItems.some(m => m.link === '#plan-salvacion')) {
+                    savedMenuItems = mandatoryMenuItems;
+                }
+
                 currentData = {
                     config: { ...defaultData.config, ...(data.config || {}) },
                     banners: Object.values(data.banners || defaultData.banners),
-                    menuItems: Object.values(data.menuItems || defaultData.menuItems),
+                    menuItems: savedMenuItems,
                     teologiaCycles: Object.values(data.teologiaCycles || defaultData.teologiaCycles),
                     blogs: Object.values(data.blogs || defaultData.blogs),
                     videos: Object.values(data.videos || defaultData.videos),
